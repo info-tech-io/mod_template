@@ -1,0 +1,35 @@
+name: Notify Hub on Content Update
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+  workflow_dispatch:
+
+jobs:
+  notify-infotecha-hub:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Notify infotecha hub
+      uses: peter-evans/repository-dispatch@v3
+      with:
+        token: ${{ secrets.PAT_TOKEN }}
+        repository: info-tech-io/infotecha
+        event-type: module-updated
+        client-payload: |
+          {
+            "module_name": "{{MODULE_NAME}}",
+            "content_repo": "{{REPO_NAME}}",
+            "updated_at": "${{ github.event.head_commit.timestamp }}",
+            "commit_sha": "${{ github.sha }}",
+            "commit_message": "${{ github.event.head_commit.message }}"
+          }
+          
+    - name: Log notification
+      run: |
+        echo "🚀 Notified infotecha hub about {{MODULE_NAME}} module update"
+        echo "📦 Repository: {{REPO_NAME}}" 
+        echo "🔄 Commit: ${{ github.sha }}"
+        echo "⏰ Timestamp: ${{ github.event.head_commit.timestamp }}"
