@@ -9,7 +9,7 @@
   "deployment": {
     "subdomain": "{{MODULE_NAME}}",
     "repository": "mod_{{MODULE_NAME_UNDERSCORE}}",
-    "build_system": "hugo-base"
+    "build_system": "hugo-templates"
   },
 
   "hugo_config": {
