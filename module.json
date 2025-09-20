@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "name": "{{MODULE_NAME}}",
+  "title": "{{MODULE_TITLE}}",
+  "description": "{{MODULE_DESCRIPTION}}",
+  "version": "0.1.0",
+  "type": "educational",
+
+  "deployment": {
+    "subdomain": "{{MODULE_NAME}}",
+    "repository": "mod_{{MODULE_NAME_UNDERSCORE}}",
+    "build_system": "hugo-base"
+  },
+
+  "hugo_config": {
+    "template": "default",
+    "theme": "compose",
+    "components": ["quiz-engine"],
+    "hugo_version": "0.148.0"
+  },
+
+  "metadata": {
+    "author": "InfoTech.io Team",
+    "maintainer": "info-tech-io",
+    "license": "MIT",
+    "difficulty": "{{DIFFICULTY}}",
+    "estimated_time": "{{ESTIMATED_TIME}}",
+    "language": "ru",
+    "tags": ["{{TAG1}}", "{{TAG2}}", "{{TAG3}}"]
+  },
+
+  "urls": {
+    "production": "https://{{MODULE_NAME}}.infotecha.ru",
+    "repository": "https://github.com/info-tech-io/mod_{{MODULE_NAME_UNDERSCORE}}",
+    "issues": "https://github.com/info-tech-io/mod_{{MODULE_NAME_UNDERSCORE}}/issues"
+  },
+
+  "status": {
+    "lifecycle": "development",
+    "last_updated": "{{CURRENT_DATE}}",
+    "content_complete": false,
+    "testing_complete": false,
+    "review_complete": false
+  }
+}
